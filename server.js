@@ -1,3 +1,4 @@
+const config = require(`config`);
 const express = require(`express`);
 const logger = require(`./utils/logger`);
 const authenticate = require(`./middlewares/authenticate`);
@@ -12,9 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(`public`));
 app.use(logger);
-app.use(morgan("tiny"));
+if (app.get("env") === "development") app.use(morgan("tiny"));
 
 app.use(helmet());
+
+console.log(`Application Name: ${config.get(`name`)}`);
 
 app.use(authenticate);
 
