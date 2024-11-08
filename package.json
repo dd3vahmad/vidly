@@ -4,7 +4,9 @@
   "description": "A movie rental app",
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "Movie",
@@ -15,5 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
