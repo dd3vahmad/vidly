@@ -1,0 +1,16 @@
+{
+  "name": "vidly",
+  "version": "1.0.0",
+  "description": "A movie rental app",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "Movie",
+    "Rental",
+    "Video"
+  ],
+  "author": "Rabiu Ahmad",
+  "license": "ISC"
+}
