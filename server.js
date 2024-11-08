@@ -7,6 +7,8 @@ const root = require(`./routes/root`);
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+app.set(`view engine`, `pug`);
+
 app.use(express.json());
 app.use(logger);
 app.use(helmet());
