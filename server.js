@@ -1,16 +1,22 @@
 const express = require(`express`);
-// const Joi = require(`joi`);
 const logger = require(`./utils/logger`);
 const authenticate = require(`./middlewares/authenticate`);
+const helmet = require("helmet");
+const morgan = require("morgan");
+// const Joi = require(`joi`);
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(`public`));
 app.use(logger);
+app.use(morgan("tiny"));
 
-app.use(authenticate)
+app.use(helmet());
+
+app.use(authenticate);
 
 const genres = [
   { id: 1, name: "Action" },
