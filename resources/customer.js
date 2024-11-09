@@ -12,7 +12,7 @@ export const CustomerResource = (customer) => {
 };
 
 export const CustomersResource = (customers) => {
-  if (!customers.length) return null;
+  if (!customers) return customers;
 
   return customers.map((c) => CustomerResource(c));
 };

@@ -10,7 +10,7 @@ export const GenreResource = (genre) => {
 };
 
 export const GenresResource = (genres) => {
-  if (!genres.length) return null;
+  if (!genres) return genres;
 
   return genres.map((g) => GenreResource(g));
 };
