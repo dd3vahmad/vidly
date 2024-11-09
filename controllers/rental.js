@@ -4,7 +4,7 @@ import {
   getMovies,
   postMovie,
   updateMovie,
-} from "../services/movie.js";
+} from "../services/rental.js";
 import error from "../utils/error.js";
 import _res from "../utils/response.js";
 

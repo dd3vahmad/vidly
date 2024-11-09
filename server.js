@@ -6,6 +6,7 @@ import dbconnect from "./db/db.js";
 import morgan from "morgan";
 import customers from "./routes/customers.js";
 import movies from "./routes/movies.js";
+import rentals from "./routes/rentals.js";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -20,6 +21,7 @@ app.use(helmet());
 
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
+app.use("/api/rentals", rentals);
 app.use("/api/movies", movies);
 
 app.get("/", root);
