@@ -10,7 +10,7 @@ const app = express();
 
 dbconnect();
 
-app.set(`view engine`, `pug`);
+app.set("view engine", "pug");
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -18,7 +18,7 @@ app.use(helmet());
 
 app.use("/api/genres", genres);
 
-app.get(`/`, root);
+app.get("/", root);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
