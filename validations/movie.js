@@ -1,5 +1,5 @@
 import Joi from "joi";
-import err from "../utils/error";
+import err from "../utils/error.js";
 
 const validateMovie = (req, res, next) => {
   const schema = Joi.object({
