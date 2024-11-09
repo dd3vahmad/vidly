@@ -20,6 +20,11 @@ app.use("/api/genres", genres);
 
 app.get("/", root);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Oops!, something went wrong!");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

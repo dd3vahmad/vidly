@@ -9,6 +9,7 @@ import {
 } from "../services/genre.js";
 import error from "../utils/error.js";
 import _res from "../utils/response.js";
+import validateGenre from "../validations/genre.js";
 
 const router = Router();
 
@@ -33,7 +34,7 @@ router.get("/:id", async (req, res) => {
     .json(_res({ message: "Genre fetched successfully", data: genre }));
 });
 
-router.post("/", (req, res) => {
+router.post("/", validateGenre, (req, res, next) => {
   const { error } = validateGenre(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -44,10 +45,7 @@ router.post("/", (req, res) => {
     .json(_res({ message: "Genre added successfully", data: newGenre }));
 });
 
-router.put("/:id", async (req, res) => {
-  const { error } = validateGenre(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
+router.put("/:id", validateGenre, async (req, res) => {
   const genre = await updateGenre(req.params.id, req.body);
 
   if (!genre)
@@ -63,13 +61,5 @@ router.delete("/:id", async (req, res) => {
 
   res.status(200).json({ message: "genre deleted successfully" });
 });
-
-function validateGenre(genre) {
-  const schema = Joi.object({
-    name: Joi.string().min(3).required(),
-  });
-
-  return schema.validate(genre);
-}
 
 export default router;
