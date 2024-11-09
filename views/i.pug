@@ -1,6 +1,186 @@
-html
-  head 
-    title= title
+doctype html
+html(lang="en")
+  head
+    title Vidly Movie Rental API
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css")
+    style.
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+      }
+
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        color: #0056b3;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      ol li, ul li {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+      }
+
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+
+      a::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #0056b3;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      a:hover::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #dee2e6;
+      }
+
+      pre {
+        background-color: #f1f3f5;
+        padding: 0.75rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+
+      /* Fade-in animation */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
   body
-    h1= message
-    p Welcome to #{title} #{message}
+    .container
+      header
+        h1 Vidly Movie Rental API
+        p Built using Express, MongoDB, and Pug by Ahmad
+
+      section
+        h2 Setup
+
+        p To run this project, ensure you have Node.js v20 or above installed. You can download it at 
+          a(href="https://nodejs.org", target="_blank") nodejs.org.
+
+        h3 Steps to Get Started
+
+        ol
+          li 
+            h4 Clone the repository
+            pre 
+              code 
+                | git clone https://github.com/dd3vahmad/vidly.git
+
+          li 
+            h4 Install dependencies
+            pre 
+              code 
+                | npm install
+
+          li 
+            h4 Set up environment variables
+            p The app uses MongoDB as the database. You need to create a `.env` file in the root of your project with the following variables:
+            pre
+              code 
+                | MONGO_URI=your-mongodb-uri
+                | PORT=3000
+
+          li 
+            h4 Run the app
+            pre 
+              code 
+                | npm run dev
+
+        h3 Live Preview
+        p
+          a(href="https://github.com/dd3vahmad/vidly", target="_blank") View the source code on GitHub
+
+      section
+        h2 Features of the API
+
+        ul
+          li Comprehensive movie rental management (CRUD operations for movies, rentals, and customers)
+          li Secure user authentication using JWT
+          li Robust validation with Joi for input data
+          li MongoDB as a NoSQL database
+          li Pagination and sorting for large datasets
+          li API rate limiting and error handling
+
+      section
+        h2 Tools & Technologies Used
+
+        ul
+          li Express.js - Fast, unopinionated web framework for Node.js
+          li MongoDB - NoSQL database for storing movie and rental data
+          li Pug - Template engine for rendering the frontend
+          li JWT - Authentication using JSON Web Tokens
+          li Joi - Input validation
+          li Morgan - HTTP request logging
+
+      footer
+        p I'm happy if you find this project interesting. Feel free to 
+          a(href="https://github.com/dd3vahmad/vidly/issues", target="_blank") create an issue
+          |  if you'd like to suggest anything.
+
+        p Big thanks to 
+          a(href="https://x.com/moshhamedani", target="_blank") Mosh Hamedani 
+          | for his amazing courses that helped me build this API!
