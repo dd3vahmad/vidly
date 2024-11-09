@@ -18,5 +18,5 @@ export const movieResource = (movie) => {
 export const moviesResource = (movies) => {
   if (!movies) return movies;
 
-  return movies.map((c) => movieResource(c));
+  return movies.map((m) => movieResource(m));
 };
