@@ -2,7 +2,7 @@ import Customer from "../models/customer.js";
 import { CustomerResource, CustomersResource } from "../resources/customer.js";
 
 export const getCustomers = async () => {
-  const customers = await Customer.find({}).sort({ name: 1 });
+  const customers = await Customer.find({}).sort("name");
 
   return CustomersResource(customers);
 };

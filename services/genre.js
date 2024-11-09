@@ -2,7 +2,7 @@ import Genre from "../models/genre.js";
 import { GenreResource, GenresResource } from "../resources/genres.js";
 
 export const getGenres = async () => {
-  const genres = await Genre.find({}).sort({ name: 1 });
+  const genres = await Genre.find({}).sort("name");
 
   return GenresResource(genres);
 };
