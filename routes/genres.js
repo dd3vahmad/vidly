@@ -1,24 +1,23 @@
 import Joi from "joi";
 import { Router } from "express";
-import { getGenre, getGenres, postGenre } from "../services/genre.js";
+import {
+  deleteGenre,
+  getGenre,
+  getGenres,
+  postGenre,
+  updateGenre,
+} from "../services/genre.js";
 import error from "../utils/error.js";
+import _res from "../utils/response.js";
 
 const router = Router();
-
-const genres = [
-  { id: 1, name: "Action" },
-  { id: 2, name: "Horror" },
-  { id: 3, name: "Comedy" },
-  { id: 4, name: "Drama" },
-  { id: 5, name: "Sci-Fi" },
-];
 
 router.get("/", async (req, res) => {
   const genres = await getGenres();
 
   res
     .status(200)
-    .json({ message: "Genres fetched successfully", data: genres });
+    .json(_res({ message: "Genres fetched successfully", data: genres }));
 });
 
 router.get("/:id", async (req, res) => {
@@ -29,7 +28,9 @@ router.get("/:id", async (req, res) => {
       .status(404)
       .send(error("The genre with the given ID was not found."));
 
-  res.status(200).json({ message: "Genre fetched successfully", data: genre });
+  res
+    .status(200)
+    .json(_res({ message: "Genre fetched successfully", data: genre }));
 });
 
 router.post("/", (req, res) => {
@@ -38,30 +39,29 @@ router.post("/", (req, res) => {
 
   const newGenre = postGenre(req.body);
 
-  res.status(200).json({ message: "Genre added successfully", data: newGenre });
+  res
+    .status(200)
+    .json(_res({ message: "Genre added successfully", data: newGenre }));
 });
 
-router.put("/:id", (req, res) => {
-  const genre = genres.find((g) => g.id === parseInt(req.params.id));
-  if (!genre)
-    return res.status(404).send("The genre with the given ID was not found.");
-
+router.put("/:id", async (req, res) => {
   const { error } = validateGenre(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  genre.name = req.body.name;
-  res.send(genre);
-});
+  const genre = await updateGenre(req.params.id, req.body);
 
-router.delete("/:id", (req, res) => {
-  const genre = genres.find((g) => g.id === parseInt(req.params.id));
   if (!genre)
     return res.status(404).send("The genre with the given ID was not found.");
 
-  const index = genres.indexOf(genre);
-  genres.splice(index, 1);
+  res
+    .status(200)
+    .json(_res({ message: "Genre fetched successfully", data: genre }));
+});
 
-  res.send(genre);
+router.delete("/:id", async (req, res) => {
+  await deleteGenre(req.params.id);
+
+  res.status(200).json({ message: "genre deleted successfully" });
 });
 
 function validateGenre(genre) {

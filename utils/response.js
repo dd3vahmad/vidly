@@ -1,5 +1,5 @@
 const _res = (res) => {
-  const response = {};
+  const response = { failed: false };
 
   response.message = res.message;
   if (res.data) response.data = res.data;
