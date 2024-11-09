@@ -17,13 +17,13 @@ const Movie = mongoose.model(
     },
     numberInStock: {
       type: Number,
-      required: true,
+      default: 0,
       min: 0,
       max: 255,
     },
     dailyRentalRate: {
       type: Number,
-      required: true,
+      default: 0,
       min: 0,
       max: 255,
     },

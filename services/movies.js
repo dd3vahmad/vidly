@@ -14,14 +14,20 @@ export const getMovie = async (id) => {
 };
 
 export const postMovie = async (data) => {
-  const newMovie = new Movie(data);
-  const savedMovie = (await newMovie.save()).populate("genre");
+  const newMovie = new Movie({ genre: data.genreId, ...data });
+  const savedMovie = await (await newMovie.save()).populate("genre");
 
   return movieResource(savedMovie);
 };
 
 export const updateMovie = async (id, data) => {
-  const movie = await Movie.findByIdAndUpdate(id, data, { new: true });
+  const movie = await (
+    await Movie.findByIdAndUpdate(
+      id,
+      { genre: data.genreId, ...data },
+      { new: true }
+    )
+  ).populate("genre");
 
   return movieResource(movie);
 };
