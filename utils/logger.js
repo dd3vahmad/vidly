@@ -1,6 +1,5 @@
-const logger = (req, res, next) => {
-  console.log("Logger");
-  next();
+const logger = (message) => {
+  console.log("Message");
 };
 
-module.exports = logger;
+export default logger;

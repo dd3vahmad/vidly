@@ -1,16 +1,19 @@
 import express from "express";
-import logger from "./utils/logger";
 import helmet from "helmet";
-import genres from "./routes/genres";
-import root from "./routes/root";
+import genres from "./routes/genres.js";
+import root from "./routes/root.js";
+import dbconnect from "./db/db.js";
+import morgan from "morgan";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+dbconnect();
+
 app.set(`view engine`, `pug`);
 
 app.use(express.json());
-app.use(logger);
+app.use(morgan("dev"));
 app.use(helmet());
 
 app.use("/api/genres", genres);
