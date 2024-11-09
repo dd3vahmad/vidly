@@ -2,20 +2,20 @@ import Movie from "../models/movie.js";
 import { movieResource, moviesResource } from "../resources/movie.js";
 
 export const getMovies = async () => {
-  const movies = await Movie.find({}).sort("name");
+  const movies = await Movie.find({}).sort("name").populate("genre");
 
   return moviesResource(movies);
 };
 
 export const getMovie = async (id) => {
-  const movie = await Movie.findById(id);
+  const movie = await Movie.findById(id).populate("genre");
 
   return movieResource(movie);
 };
 
 export const postMovie = async (data) => {
   const newMovie = new Movie(data);
-  const savedMovie = await newMovie.save();
+  const savedMovie = (await newMovie.save()).populate("genre");
 
   return movieResource(savedMovie);
 };
