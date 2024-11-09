@@ -4,6 +4,7 @@ import genres from "./routes/genres.js";
 import root from "./routes/root.js";
 import dbconnect from "./db/db.js";
 import morgan from "morgan";
+import customers from "./routes/customers.js";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -17,6 +18,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 
 app.use("/api/genres", genres);
+app.use("/api/customers", customers);
 
 app.get("/", root);
 
