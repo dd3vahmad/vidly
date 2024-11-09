@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { index, post, remove, show, update } from "../controllers/genre.js";
+import validateGenre from "../validations/genre.js";
 
 const router = Router();
 

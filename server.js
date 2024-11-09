@@ -21,7 +21,7 @@ app.use("/api/genres", genres);
 app.get("/", root);
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error(err);
   res.status(500).send("Oops!, something went wrong!");
 });
 

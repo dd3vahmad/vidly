@@ -4,9 +4,9 @@ import {
   getGenres,
   postGenre,
   updateGenre,
-} from "../services/genre";
-import error from "../utils/error";
-import _res from "../utils/response";
+} from "../services/genre.js";
+import error from "../utils/error.js";
+import _res from "../utils/response.js";
 
 export const index = async (req, res) => {
   const genres = await getGenres();
