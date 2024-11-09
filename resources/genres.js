@@ -1,4 +1,6 @@
 export const GenreResource = (genre) => {
+  if (!genre) return null;
+
   const { _id, name } = genre;
 
   return {
@@ -8,5 +10,7 @@ export const GenreResource = (genre) => {
 };
 
 export const GenresResource = (genres) => {
+  if (!genres.length) return null;
+
   return genres.map((g) => GenreResource(g));
 };
