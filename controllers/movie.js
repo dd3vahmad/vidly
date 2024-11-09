@@ -19,7 +19,7 @@ export const index = async (req, res) => {
 export const show = async (req, res) => {
   const movie = await getMovie(req.params.id);
 
-  if (!genre)
+  if (!movie)
     return res
       .status(404)
       .send(error("The movie with the given ID was not found."));

@@ -19,7 +19,7 @@ export const index = async (req, res) => {
 export const show = async (req, res) => {
   const customer = await getCustomer(req.params.id);
 
-  if (!genre)
+  if (!customer)
     return res
       .status(404)
       .send(error("The customer with the given ID was not found."));
