@@ -1,7 +1,7 @@
 export const CustomerResource = (customer) => {
   if (!customer) return null;
 
-  const { _id, name } = customer;
+  const { _id, name, phone, isGold } = customer;
 
   return {
     id: _id,

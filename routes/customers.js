@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { index, post, remove, show, update } from "../controllers/genre.js";
+import { index, post, remove, show, update } from "../controllers/customer.js";
 import validateCustomer from "../validations/customer.js";
 
 const router = Router();
