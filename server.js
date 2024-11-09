@@ -1,8 +1,8 @@
-const express = require(`express`);
-const logger = require(`./utils/logger`);
-const helmet = require("helmet");
-const genres = require(`./routes/genres`);
-const root = require(`./routes/root`);
+import express from "express";
+import logger from "./utils/logger";
+import helmet from "helmet";
+import genres from "./routes/genres";
+import root from "./routes/root";
 
 const PORT = process.env.PORT || 3000;
 const app = express();

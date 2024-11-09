@@ -1,5 +1,7 @@
-const Joi = require("joi");
-const router = require("express").Router();
+import Joi from "joi";
+import { Router } from "express";
+
+const router = Router();
 
 const genres = [
   { id: 1, name: "Action" },
@@ -63,4 +65,4 @@ function validateGenre(genre) {
   return schema.validate(genre);
 }
 
-module.exports = router;
+export default router;
