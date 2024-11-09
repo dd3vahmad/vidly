@@ -45,6 +45,6 @@ export const updateRental = async (id, data) => {
   return rentalResource(movie);
 };
 
-export const deleteMovie = async (id) => {
+export const deleteRental = async (id) => {
   return await Rental.findByIdAndDelete(id);
 };
